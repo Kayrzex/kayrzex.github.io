@@ -1,0 +1,82 @@
+---
+import { GithubIcon, InstagramIcon, TwitterIcon } from "@lucide/astro";
+---
+
+<nav class="w-full z-20 top-0 left-0 bg-gray-900">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+        <a
+            href="/"
+            class="text-2xl font-bold text-blue-700 dark:text-blue-300 tracking-tight"
+            >Kayrzex</a
+        >
+        <div class="flex items-center gap-4">
+            <div class="hidden md:flex gap-6">
+                <a
+                    href="/"
+                    class="font-medium text-blue-700 dark:text-blue-200 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition"
+                    >Ana Sayfa</a
+                >
+                <a
+                    href="/portfolio"
+                    class="font-medium text-blue-700 dark:text-blue-200 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition"
+                    >Portfolyo</a
+                >
+                <a
+                    href="/blog"
+                    class="font-medium text-blue-700 dark:text-blue-200 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition"
+                    >Blog</a
+                >
+                <a
+                    href="/about"
+                    class="font-medium text-blue-700 dark:text-blue-200 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition"
+                    >Hakkımda</a
+                >
+            </div>
+            <div class="flex gap-2 ml-4">
+                <a
+                    href="https://instagram.com/Kayrzex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    class="text-gray-700 dark:text-gray-200 hover:text-pink-500 transition"
+                >
+                    <InstagramIcon />
+                </a>
+                <a
+                    href="https://twitter.com/Kvyrvio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    class="text-gray-700 dark:text-gray-200 hover:text-sky-500 transition"
+                >
+                    <TwitterIcon />
+                </a>
+                <a
+                    href="https://github.com/kayrzex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    class="text-gray-700 dark:text-gray-200 hover:text-purple-800 dark:hover:text-purple-800 transition"
+                >
+                    <GithubIcon />
+                </a>
+            </div>
+        </div>
+        <!-- Mobil hamburger menü (geliştirilebilir) -->
+        <button
+            class="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            aria-label="Menüyü Aç"
+        >
+            <svg
+                class="w-7 h-7 text-blue-700 dark:text-blue-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M4 6h16M4 12h16M4 18h16"></path></svg
+            >
+        </button>
+    </div>
+</nav>
