@@ -1,0 +1,51 @@
+---
+// Interaktif dünya haritası bileşeni (Leaflet.js ile)
+---
+<div class="w-full max-w-4xl mx-auto my-12">
+  <h2 class="text-2xl font-bold mb-4 text-center">Ziyaretçi Haritası</h2>
+  <div id="visitor-map" class="w-full h-[400px] rounded-xl shadow border border-gray-200 dark:border-gray-700"></div>
+</div>
+<!-- Leaflet CSS/JS CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const map = L.map('visitor-map').setView([39.0, 35.0], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+    // Belirtilen şehirler için markerlar
+    const visitors = [
+      { lat: 41.3275, lng: 19.8187, label: 'Makedonya' },
+      { lat: 48.8566, lng: 2.3522, label: 'Paris, Fransa' },
+      { lat: 43.6028, lng: 39.7342, label: 'Soçi, Rusya' },
+      { lat: 42.0231, lng: 35.1531, label: 'Sinop, Türkiye' },
+      { lat: 37.2153, lng: 28.3636, label: 'Muğla, Türkiye' },
+      { lat: 39.3190, lng: 26.6515, label: 'Cunda, Türkiye' },
+      { lat: 39.6484, lng: 27.8826, label: 'Balıkesir, Türkiye' },
+      { lat: 40.6544, lng: 29.3780, label: 'Yalova, Türkiye' },
+      { lat: 40.1828, lng: 29.0665, label: 'Bursa, Türkiye' },
+      { lat: 41.0082, lng: 28.9784, label: 'İstanbul, Türkiye' },
+      { lat: 40.9780, lng: 27.5110, label: 'Tekirdağ, Türkiye' },
+      { lat: 39.9334, lng: 32.8597, label: 'Ankara, Türkiye' },
+      { lat: 40.1553, lng: 26.4142, label: 'Çanakkale, Türkiye' },
+      { lat: 38.4192, lng: 27.1287, label: 'İzmir, Türkiye' },
+      { lat: 41.2867, lng: 36.33, label: 'Samsun, Türkiye' },
+      { lat: 40.7561, lng: 30.3781, label: 'Sakarya, Türkiye' },
+      { lat: 40.8533, lng: 29.8815, label: 'Kocaeli, Türkiye' },
+      { lat: 37.2153, lng: 28.3636, label: 'Muğla, Türkiye' },
+      { lat: 39.7843, lng: 30.5192, label: 'Eskişehir, Türkiye' },
+      { lat: 40.5760, lng: 31.5788, label: 'Bolu, Türkiye' },
+      { lat: 35.1856, lng: 33.3823, label: 'Kıbrıs' },
+    ];
+    visitors.forEach(v => {
+      L.marker([v.lat, v.lng]).addTo(map).bindPopup(v.label);
+    });
+  });
+</script>
+<style>
+  #visitor-map :global(.leaflet-container) {
+    border-radius: 0.75rem;
+  }
+</style>
