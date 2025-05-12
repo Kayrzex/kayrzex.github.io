@@ -15,17 +15,22 @@ import VisitorMap from "../components/VisitorMap.astro";
 			window.addEventListener("DOMContentLoaded", () => {
 				const splash = document.getElementById("splash");
 				const main = document.getElementById("main-content");
-
-				// Ana içerik fade-in
-				setTimeout(() => {
-					main.classList.add("opacity-100");
-				}, 1500);
-
-				// Splash ekranı hızlıca kaldır
-				setTimeout(() => {
-					splash.classList.add("opacity-0", "pointer-events-none");
-					setTimeout(() => splash.remove(), 250);
-				}, 2000);
+				if (main) {
+					// Ana içerik fade-in
+					setTimeout(() => {
+						main.classList.add("opacity-100");
+					}, 1500);
+				}
+				if (splash) {
+					// Splash ekranı hızlıca kaldır
+					setTimeout(() => {
+						splash.classList.add(
+							"opacity-0",
+							"pointer-events-none",
+						);
+						setTimeout(() => splash.remove(), 250);
+					}, 2000);
+				}
 			});
 		</script>
 		<!-- Splash Screen: ikitane.png ile Dodge Araba -->
@@ -69,73 +74,158 @@ import VisitorMap from "../components/VisitorMap.astro";
 							loading="lazy"
 						/>
 						<div class="p-4">
-							<h3 class="text-xl font-bold text-blue-700 dark:text-blue-300 mb-1">Tel Ali</h3>
-							<p class="text-gray-700 dark:text-gray-300 text-sm">Kendi geliştirdiğim basit bir oyun. Oynamak için görsele tıklayın!</p>
+							<h3
+								class="text-xl font-bold text-blue-700 dark:text-blue-300 mb-1"
+							>
+								Tel Ali
+							</h3>
+							<p class="text-gray-700 dark:text-gray-300 text-sm">
+								Kendi geliştirdiğim basit bir oyun. Oynamak için
+								görsele tıklayın!
+							</p>
 						</div>
 					</a>
 				</div>
 				<!-- Tel Ali Oyunu Kartı Bitiş -->
 			</Layout>
 		</div>
-		<button id="theme-toggle" type="button" aria-label="Tema Değiştir" class="fixed bottom-6 right-6 z-50 bg-gray-900 text-white dark:bg-white dark:text-gray-900 rounded-full p-3 shadow-lg transition-colors duration-300 focus:outline-none">
-			<svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+		<button
+			id="theme-toggle"
+			type="button"
+			aria-label="Tema Değiştir"
+			class="fixed bottom-6 right-6 z-50 bg-gray-900 text-white dark:bg-white dark:text-gray-900 rounded-full p-3 shadow-lg transition-colors duration-300 focus:outline-none"
+		>
+			<svg
+				id="theme-icon"
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+				></path>
 			</svg>
 		</button>
 		<!-- Maymun GIF açılır butonu -->
-		<button id="monkey-btn" type="button" aria-label="Maymun Göster" class="fixed bottom-6 left-6 z-50 bg-yellow-400 hover:bg-yellow-500 text-black rounded-full p-2 shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-600 w-10 h-10 flex items-center justify-center">
-			<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a8 8 0 100 16 8 8 0 000-16zm0 0v4m0 4h.01" /></svg>
+		<button
+			id="monkey-btn"
+			type="button"
+			aria-label="Maymun Göster"
+			class="fixed bottom-6 left-6 z-50 bg-yellow-400 hover:bg-yellow-500 text-black rounded-full p-2 shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-600 w-10 h-10 flex items-center justify-center"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="w-6 h-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 4a8 8 0 100 16 8 8 0 000-16zm0 0v4m0 4h.01"
+				></path></svg
+			>
 		</button>
-		<div id="monkey-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none">
-			<div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl p-4 flex flex-col items-center max-w-xs">
-				<img src="/maymun.gif" alt="Maymun" class="w-64 h-64 object-contain rounded mb-2" />
-				<button id="monkey-close" type="button" class="mt-2 px-4 py-1 rounded bg-yellow-400 hover:bg-yellow-500 text-black font-semibold">Kapat</button>
+		<div
+			id="monkey-modal"
+			class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
+		>
+			<div
+				class="bg-white dark:bg-gray-900 rounded-xl shadow-xl p-4 flex flex-col items-center max-w-xs"
+			>
+				<img
+					src="/maymun.gif"
+					alt="Maymun"
+					class="w-64 h-64 object-contain rounded mb-2"
+				/>
+				<button
+					id="monkey-close"
+					type="button"
+					class="mt-2 px-4 py-1 rounded bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
+					>Kapat</button
+				>
 			</div>
 		</div>
 		<script>
-			(function() {
-				const themeToggle = document.getElementById('theme-toggle');
-				const themeIcon = document.getElementById('theme-icon');
-				function setTheme(dark) {
+			(function () {
+				const themeToggle = document.getElementById("theme-toggle");
+				const themeIcon = document.getElementById("theme-icon");
+				function setTheme(dark: boolean) {
 					if (dark) {
-						document.documentElement.classList.add('dark');
-						themeToggle.classList.remove('bg-white', 'text-gray-900');
-						themeToggle.classList.add('bg-gray-900', 'text-white');
-						themeIcon.innerHTML = `<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z' />`;
+						document.documentElement.classList.add("dark");
+						if (themeToggle && themeIcon) {
+							themeToggle.classList.remove(
+								"bg-white",
+								"text-gray-900",
+							);
+							themeToggle.classList.add(
+								"bg-gray-900",
+								"text-white",
+							);
+							themeIcon.innerHTML = `<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z' />`;
+						}
 					} else {
-						document.documentElement.classList.remove('dark');
-						themeToggle.classList.remove('bg-gray-900', 'text-white');
-						themeToggle.classList.add('bg-white', 'text-gray-900');
-						themeIcon.innerHTML = `<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z' />`;
+						document.documentElement.classList.remove("dark");
+						if (themeToggle && themeIcon) {
+							themeToggle.classList.remove(
+								"bg-gray-900",
+								"text-white",
+							);
+							themeToggle.classList.add(
+								"bg-white",
+								"text-gray-900",
+							);
+							themeIcon.innerHTML = `<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z' />`;
+						}
 					}
 				}
-				let dark = localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+				let dark =
+					localStorage.getItem("theme") === "dark" ||
+					(!localStorage.getItem("theme") &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches);
 				setTheme(dark);
-				themeToggle.addEventListener('click', () => {
-					dark = !dark;
-					setTheme(dark);
-					localStorage.setItem('theme', dark ? 'dark' : 'light');
-				});
+				if (themeToggle) {
+					themeToggle.addEventListener("click", () => {
+						dark = !dark;
+						setTheme(dark);
+						localStorage.setItem("theme", dark ? "dark" : "light");
+					});
+				}
 			})();
-			(function() {
-				const btn = document.getElementById('monkey-btn');
-				const modal = document.getElementById('monkey-modal');
-				const close = document.getElementById('monkey-close');
-				btn.addEventListener('click', () => {
-					modal.classList.remove('opacity-0', 'pointer-events-none');
-					modal.classList.add('opacity-100');
-				});
-				close.addEventListener('click', () => {
-					modal.classList.add('opacity-0', 'pointer-events-none');
-					modal.classList.remove('opacity-100');
-				});
-				// Modal dışında tıklayınca kapansın
-				modal.addEventListener('click', (e) => {
-					if (e.target === modal) {
-						modal.classList.add('opacity-0', 'pointer-events-none');
-						modal.classList.remove('opacity-100');
-					}
-				});
+			(function () {
+				const btn = document.getElementById("monkey-btn");
+				const modal = document.getElementById("monkey-modal");
+				const close = document.getElementById("monkey-close");
+				if (btn && modal && close) {
+					btn.addEventListener("click", () => {
+						modal.classList.remove(
+							"opacity-0",
+							"pointer-events-none",
+						);
+						modal.classList.add("opacity-100");
+					});
+					close.addEventListener("click", () => {
+						modal.classList.add("opacity-0", "pointer-events-none");
+						modal.classList.remove("opacity-100");
+					});
+					// Modal dışında tıklayınca kapansın
+					modal.addEventListener("click", (e) => {
+						if (e.target === modal) {
+							modal.classList.add(
+								"opacity-0",
+								"pointer-events-none",
+							);
+							modal.classList.remove("opacity-100");
+						}
+					});
+				}
 			})();
 		</script>
 		<style>
