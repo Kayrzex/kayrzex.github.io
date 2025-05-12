@@ -59,7 +59,7 @@ import VisitorMap from "../components/VisitorMap.astro";
 				<PhotoSlider />
 				<VisitorMap />
 				<!-- Tel Ali Oyunu Kartı Başlangıç -->
-				<div class="flex justify-center mt-12">
+				<div class="flex flex-col md:flex-row justify-center gap-8 mt-12">
 					<a
 						href="https://kayrzex.github.io/tel-ali/index.html"
 						target="_blank"
@@ -74,17 +74,30 @@ import VisitorMap from "../components/VisitorMap.astro";
 							loading="lazy"
 						/>
 						<div class="p-4">
-							<h3
-								class="text-xl font-bold text-blue-700 dark:text-blue-300 mb-1"
-							>
-								Tel Ali
-							</h3>
-							<p class="text-gray-700 dark:text-gray-300 text-sm">
-								Kendi geliştirdiğim basit bir oyun. Oynamak için
-								görsele tıklayın!
-							</p>
+							<h3 class="text-xl font-bold text-blue-700 dark:text-blue-300 mb-1">Tel Ali</h3>
+							<p class="text-gray-700 dark:text-gray-300 text-sm">Kendi geliştirdiğim basit bir oyun. Oynamak için görsele tıklayın!</p>
 						</div>
 					</a>
+					<!-- Zombie Oyunu Kartı Başlangıç -->
+					<a
+						href="https://kayrzex.github.io/zombie/zombie.html"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block group max-w-xs rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/80 transition-transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-400"
+						aria-label="Tel Ali Zombilere Karşı oyununu yeni sekmede aç"
+					>
+						<img
+							src="/images/askerr.png"
+							alt="Tel Ali Zombilere Karşı Kapak"
+							class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-200"
+							loading="lazy"
+						/>
+						<div class="p-4">
+							<h3 class="text-xl font-bold text-green-700 dark:text-green-300 mb-1">Tel Ali: Zombilere Karşı</h3>
+							<p class="text-gray-700 dark:text-gray-300 text-sm">Tel Ali'nin zombi istilasına karşı mücadelesi! Oynamak için görsele tıklayın.</p>
+						</div>
+					</a>
+					<!-- Zombie Oyunu Kartı Bitiş -->
 				</div>
 				<!-- Tel Ali Oyunu Kartı Bitiş -->
 			</Layout>
