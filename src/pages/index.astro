@@ -3,6 +3,7 @@ import Hero from "../components/Hero.astro";
 import PhotoSlider from "../components/PhotoSlider.astro";
 import Layout from "../layouts/Layout.astro";
 import VisitorMap from "../components/VisitorMap.astro";
+import VisitorCounter from "../components/VisitorCounter.astro";
 ---
 
 <html lang="tr">
@@ -55,6 +56,7 @@ import VisitorMap from "../components/VisitorMap.astro";
 			class="opacity-0 transition-opacity duration-700"
 		>
 			<Layout>
+					<VisitorCounter />
 				<Hero />
 				<PhotoSlider />
 				<VisitorMap />

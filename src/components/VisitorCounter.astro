@@ -1,0 +1,18 @@
+---
+// Basit bir ziyaretçi sayacı. Sunucu tarafında bir API veya veritabanı ile gerçek sayaç yapılmalıdır.
+let count = 0;
+---
+<script>
+(async () => {
+  // Basit bir public API ile sayaç (gerçek projede kendi sunucunuzu kullanın)
+  // Bu örnekte CountAPI kullanılıyor: https://countapi.xyz/
+  const res = await fetch('https://api.countapi.xyz/hit/kayrzex-website/visits');
+  const data = await res.json();
+  const el = document.getElementById('visitor-count');
+  if (el) el.textContent = String(data.value);
+})();
+</script>
+<div class="fixed top-4 left-6 z-50 bg-white/90 dark:bg-gray-900/80 text-gray-900 dark:text-white rounded-full px-4 py-2 shadow-lg text-sm font-semibold select-none flex items-center gap-2">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+  <span id="visitor-count">...</span> ziyaretçi
+</div>
