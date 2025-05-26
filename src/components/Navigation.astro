@@ -69,15 +69,20 @@ import { GithubIcon, InstagramIcon, TwitterIcon } from "@lucide/astro";
         >
             <svg
                 id="hamburger-icon"
-                class="w-7 h-7 text-blue-700 dark:text-blue-300"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
-                stroke-width="2"
+                stroke-width="3"
                 viewBox="0 0 24 24"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                ><path d="M4 6h16M4 12h16M4 18h16"></path></svg
             >
+                <!-- Üst ekmek (ten rengi) -->
+                <path d="M4 6h16" stroke="#D2B48C"></path>
+                <!-- Köfte (kahverengi) -->
+                <path d="M4 12h16" stroke="#8B4513"></path>
+                <!-- Alt ekmek (ten rengi) -->
+                <path d="M4 18h16" stroke="#D2B48C"></path>
+            </svg>
             <svg
                 id="close-icon"
                 class="w-7 h-7 text-blue-700 dark:text-blue-300 hidden"
