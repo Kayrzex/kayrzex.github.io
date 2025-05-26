@@ -191,6 +191,28 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 				></path></svg
 			>
 		</button>
+
+		<!-- Recep Video açılır butonu -->
+		<button
+			id="video-btn"
+			type="button"
+			aria-label="Recep Video Göster"
+			class="fixed bottom-20 left-6 z-50 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="w-6 h-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+				><path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.01M15 10h1.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+				></path></svg
+			>
+		</button>
 		<div
 			id="monkey-modal"
 			class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
@@ -207,6 +229,33 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 					id="monkey-close"
 					type="button"
 					class="mt-2 px-4 py-1 rounded bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
+					>Kapat</button
+				>
+			</div>
+		</div>
+
+		<!-- Recep Video Modal -->
+		<div
+			id="video-modal"
+			class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
+		>
+			<div
+				class="bg-white dark:bg-gray-900 rounded-xl shadow-xl p-4 flex flex-col items-center max-w-lg"
+			>
+				<video
+					id="recep-video"
+					src="/images/recep.mp4"
+					controls
+					autoplay
+					loop
+					class="w-full max-w-md h-auto rounded mb-4"
+				>
+					Tarayıcınız video oynatmayı desteklemiyor.
+				</video>
+				<button
+					id="video-close"
+					type="button"
+					class="mt-2 px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white font-semibold transition-colors"
 					>Kapat</button
 				>
 			</div>
@@ -282,6 +331,54 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 								"pointer-events-none",
 							);
 							modal.classList.remove("opacity-100");
+						}
+					});
+				}
+			})();
+
+			// Video modal kontrolü
+			(function () {
+				const videoBtn = document.getElementById("video-btn");
+				const videoModal = document.getElementById("video-modal");
+				const videoClose = document.getElementById("video-close");
+				const video = document.getElementById(
+					"recep-video",
+				) as HTMLVideoElement;
+
+				if (videoBtn && videoModal && videoClose && video) {
+					videoBtn.addEventListener("click", () => {
+						videoModal.classList.remove(
+							"opacity-0",
+							"pointer-events-none",
+						);
+						videoModal.classList.add("opacity-100");
+						// Video otomatik başlasın
+						video.currentTime = 0;
+						video.play();
+					});
+
+					videoClose.addEventListener("click", () => {
+						videoModal.classList.add(
+							"opacity-0",
+							"pointer-events-none",
+						);
+						videoModal.classList.remove("opacity-100");
+						// Video durdur
+						video.pause();
+						video.currentTime = 0;
+					});
+
+					// Modal dışında tıklayınca kapansın
+					videoModal.addEventListener("click", (e) => {
+						if (e.target === videoModal) {
+							videoModal.classList.add(
+								"opacity-0",
+								"pointer-events-none",
+							);
+							videoModal.classList.remove("opacity-100");
+							// Video durdur
+							video.pause();
+							video.currentTime = 0;
 						}
 					});
 				}

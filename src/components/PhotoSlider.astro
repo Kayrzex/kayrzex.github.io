@@ -5,15 +5,70 @@ const images = [
         src: "/images/kayra.png",
         alt: "Kayra Fotoğrafı",
     },
+    {
+        src: "/maymun.png",
+        alt: "Maymun Fotoğrafı",
+    },
 ];
 let current = 0;
-function prev() {
-    current = (current - 1 + images.length) % images.length;
-}
-function next() {
-    current = (current + 1) % images.length;
-}
 ---
+
+<script>
+    let currentIndex = 0;
+    const images = [
+        { src: "/images/kayra.png", alt: "Kayra Fotoğrafı" },
+        { src: "/maymun.png", alt: "Maymun Fotoğrafı" },
+    ];
+    function updateImage() {
+        const img = document.querySelector("#slider-image") as HTMLImageElement;
+        const dots = document.querySelectorAll(".dot-indicator");
+
+        if (img) {
+            img.src = images[currentIndex].src;
+            img.alt = images[currentIndex].alt;
+        }
+
+        // Dot indicator'ları güncelle
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.className =
+                    "dot-indicator w-3 h-3 rounded-full bg-blue-700 dark:bg-blue-300 cursor-pointer transition-colors";
+            } else {
+                dot.className =
+                    "dot-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-700 cursor-pointer transition-colors";
+            }
+        });
+    }
+
+    function prev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+    }
+
+    function next() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+    }
+
+    function goToSlide(index: number) {
+        currentIndex = index;
+        updateImage();
+    }
+
+    // Global fonksiyonlar için tip tanımları
+    declare global {
+        interface Window {
+            prev: () => void;
+            next: () => void;
+            goToSlide: (index: number) => void;
+        }
+    }
+
+    // Global fonksiyonlar
+    window.prev = prev;
+    window.next = next;
+    window.goToSlide = goToSlide;
+</script>
 
 <div
     class="w-full flex flex-col items-center justify-center py-8 relative overflow-hidden"
@@ -29,17 +84,17 @@ function next() {
         class="relative z-10 w-full max-w-lg aspect-[4/5] overflow-hidden rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
     >
         <img
-            src={images[current].src}
-            alt={images[current].alt}
+            id="slider-image"
+            src={images[0].src}
+            alt={images[0].alt}
             class="object-cover w-full h-full transition-all duration-500 bg-transparent"
             loading="lazy"
             draggable="false"
         />
         <button
-            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-900/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none"
+            class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-900/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none transition-colors"
             aria-label="Önceki fotoğraf"
             onclick="prev()"
-            disabled={images.length === 1}
         >
             <svg
                 class="w-6 h-6 text-blue-700 dark:text-blue-300"
@@ -54,10 +109,9 @@ function next() {
             >
         </button>
         <button
-            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-900/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-900/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none transition-colors"
             aria-label="Sonraki fotoğraf"
             onclick="next()"
-            disabled={images.length === 1}
         >
             <svg
                 class="w-6 h-6 text-blue-700 dark:text-blue-300"
@@ -76,9 +130,9 @@ function next() {
         {
             images.map((img, i) => (
                 <button
-                    class={`w-3 h-3 rounded-full ${i === current ? "bg-blue-700 dark:bg-blue-300" : "bg-gray-300 dark:bg-gray-700"}`}
+                    class={`dot-indicator w-3 h-3 rounded-full cursor-pointer transition-colors ${i === 0 ? "bg-blue-700 dark:bg-blue-300" : "bg-gray-300 dark:bg-gray-700"}`}
                     aria-label={`Fotoğraf ${i + 1}`}
-                    onclick="() => (current = i)"
+                    onclick={`goToSlide(${i})`}
                 />
             ))
         }
