@@ -9,9 +9,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@lucide/astro": "^0.503.0",
-    "@tailwindcss/vite": "^4.1.4",
-    "astro": "^5.7.8",
-    "tailwindcss": "^4.1.4"
+    "@lucide/astro": "^0.511.0",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
+    "tailwindcss": "^4.1.7"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.41.1",
+    "@rollup/rollup-linux-arm64-gnu": "^4.41.1",
+    "@rollup/rollup-darwin-x64": "^4.41.1",
+    "@rollup/rollup-darwin-arm64": "^4.41.1",
+    "@rollup/rollup-win32-x64-msvc": "^4.41.1"
   }
 }
