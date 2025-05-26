@@ -56,14 +56,15 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 			class="opacity-0 transition-opacity duration-700"
 		>
 			<Layout>
-					<VisitorCounter />
+				<VisitorCounter />
 				<Hero />
 				<PhotoSlider />
 				<VisitorMap />
-				<!-- Tel Ali Oyunu Kartı Başlangıç -->
+				<!-- Oyunlar Bölümü Başlangıç -->
 				<div
-					class="flex flex-col md:flex-row justify-center gap-8 mt-12"
+					class="flex flex-col md:flex-row justify-center gap-8 mt-12 flex-wrap"
 				>
+					<!-- Tel Ali Oyunu Kartı -->
 					<a
 						href="https://kayrzex.github.io/tel-ali/index.html"
 						target="_blank"
@@ -89,7 +90,8 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 							</p>
 						</div>
 					</a>
-					<!-- Zombie Oyunu Kartı Başlangıç -->
+
+					<!-- Zombie Oyunu Kartı -->
 					<a
 						href="https://kayrzex.github.io/zombie/zombie.html"
 						target="_blank"
@@ -115,9 +117,35 @@ import VisitorCounter from "../components/VisitorCounter.astro";
 							</p>
 						</div>
 					</a>
-					<!-- Zombie Oyunu Kartı Bitiş -->
+
+					<!-- Tel Ali Trafikte Oyunu Kartı -->
+					<a
+						href="https://kayrzex.github.io/cargame/build/web/index.html"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block group max-w-xs rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-900/80 transition-transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-400"
+						aria-label="Tel Ali Trafikte oyununu yeni sekmede aç"
+					>
+						<img
+							src="/images/car.png"
+							alt="Tel Ali Trafikte Oyunu Kapak"
+							class="w-full h-56 object-cover group-hover:opacity-90 transition-opacity duration-200"
+							loading="lazy"
+						/>
+						<div class="p-4">
+							<h3
+								class="text-xl font-bold text-red-700 dark:text-red-300 mb-1"
+							>
+								Tel Ali Trafikte
+							</h3>
+							<p class="text-gray-700 dark:text-gray-300 text-sm">
+								Tel Ali'nin trafik macerası! Arabaları geçin ve
+								kazadan kaçının. Oynamak için görsele tıklayın.
+							</p>
+						</div>
+					</a>
 				</div>
-				<!-- Tel Ali Oyunu Kartı Bitiş -->
+				<!-- Oyunlar Bölümü Bitiş -->
 			</Layout>
 		</div>
 		<button
