@@ -71,17 +71,20 @@ let current = 0;
 </script>
 
 <div
-    class="w-full flex flex-col items-center justify-center py-8 relative overflow-hidden"
+    class="w-full flex flex-col items-center justify-center py-8 relative overflow-hidden min-h-[600px] sm:min-h-[700px] md:min-h-[800px]"
 >
     <img
-        class="absolute inset-0 w-full h-full object-cover z-0"
+        class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-90"
         src="/images/ikitane.png"
-        alt="Arka Plan"
+        alt="Arka Plan - Arabalar"
         loading="lazy"
         draggable="false"
     />
+    <!-- Mobil için ek arka plan katmanı -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-0 sm:hidden"></div>
+    
     <div
-        class="relative z-10 w-full max-w-lg aspect-[4/5] overflow-hidden rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+        class="relative z-10 w-full max-w-xs sm:max-w-lg aspect-[4/5] overflow-hidden rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
     >
         <img
             id="slider-image"
